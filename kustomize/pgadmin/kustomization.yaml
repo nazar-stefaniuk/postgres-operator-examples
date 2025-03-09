@@ -9,7 +9,7 @@ resources:
 secretGenerator:
 - name: pgadmin-password-secret
   literals:
-  - rhino-password=pgadmin
+  - admin-password="*************"
   type: Opaque
 
 generatorOptions:

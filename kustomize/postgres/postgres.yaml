@@ -1,21 +1,23 @@
 apiVersion: postgres-operator.crunchydata.com/v1beta1
 kind: PostgresCluster
 metadata:
-  name: hippo
+  name: gitlab
 spec:
   postgresVersion: 17
   users:
-    - name: rhino
+    - name: nazarstefaniuk
       databases:
-        - zoo
+        - gitlab
+      options: 'SUPERUSER'
   instances:
     - name: instance1
       dataVolumeClaimSpec:
         accessModes:
         - "ReadWriteOnce"
+        storageClassName: 'longhorn'
         resources:
           requests:
-            storage: 1Gi
+            storage: 10Gi
   backups:
     pgbackrest:
       repos:
@@ -26,4 +28,4 @@ spec:
             - "ReadWriteOnce"
             resources:
               requests:
-                storage: 1Gi
+                storage: 10Gi
